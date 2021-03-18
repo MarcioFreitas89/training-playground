@@ -3,8 +3,9 @@ pipeline {
     stages {
         stage('Maven') {
             agent { 
-            docker {
-                image 'maven:3-alpine' 
+            dockerfile {
+                filename 'Dockerfile-java'
+                dir '003 - Defining Execution Environments/'
             }
            } 
             steps {
@@ -13,8 +14,9 @@ pipeline {
         }
         stage('NPM') {
             agent { 
-            docker { 
-                image 'node:6.3'
+            dockerfile { 
+                filename 'Dockerfile-node'
+                dir '003 - Defining Execution Environments/'
                 } 
            } 
             steps {
